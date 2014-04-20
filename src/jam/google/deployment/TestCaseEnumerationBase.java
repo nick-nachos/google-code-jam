@@ -2,6 +2,7 @@ package jam.google.deployment;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Enumeration;
 
 public abstract class TestCaseEnumerationBase<T extends TestCaseBase>
@@ -50,9 +51,24 @@ public abstract class TestCaseEnumerationBase<T extends TestCaseBase>
     protected final String[] readStringItemLine() {
         return this.readLine().split(" ");
     }
+    
+    protected final String[] readStringItemLine(int length) {
+        String[] items = this.readLine().split(" ");
+        
+        if (length < 0 || length == items.length) {
+            return items;
+        }
+        else {
+            return Arrays.copyOf(items, length);
+        }
+    }
 
     protected final int[] readIntegerItemLine() {
-        String[] stringItems = this.readStringItemLine();
+        return this.readIntegerItemLine(-1);
+    }
+    
+    protected final int[] readIntegerItemLine(int length) {
+        String[] stringItems = this.readStringItemLine(length);
         int[] items = new int[stringItems.length];
 
         for (int i = 0; i < items.length; i++) {
@@ -63,7 +79,11 @@ public abstract class TestCaseEnumerationBase<T extends TestCaseBase>
     }
 
     protected final double[] readDecimalItemLine() {
-        String[] stringItems = this.readStringItemLine();
+        return this.readDecimalItemLine(-1);
+    }
+    
+    protected final double[] readDecimalItemLine(int length) {
+        String[] stringItems = this.readStringItemLine(length);
         double[] items = new double[stringItems.length];
 
         for (int i = 0; i < items.length; i++) {
