@@ -1,16 +1,14 @@
 package jam.google.deployment;
 
-public abstract class TestCaseBase
-{
-    private int seqNum;
+public abstract class TestCaseBase {
     
-    public TestCaseBase(int seqNum)
-    {
+    private int seqNum;
+
+    public TestCaseBase(int seqNum) {
         this.seqNum = seqNum;
     }
-    
-    public final int getSeqNum()
-    {
+
+    public final int getSeqNum() {
         return this.seqNum;
     }
 }

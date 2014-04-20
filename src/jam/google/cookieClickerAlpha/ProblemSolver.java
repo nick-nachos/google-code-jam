@@ -2,36 +2,34 @@ package jam.google.cookieClickerAlpha;
 
 import jam.google.deployment.IProblemSolver;
 
-public final class ProblemSolver implements IProblemSolver<TestCase>
-{
+public final class ProblemSolver implements IProblemSolver<TestCase> {
+    
     @Override
-    public String solve(TestCase instance)
-    {
+    public String solve(TestCase instance) {
         double cookieRate = 2.0;
         double totalTime = 0.0;
         boolean nextFarmRequired;
 
-        
-        do
-        {
-            double currentRequiredTime = instance.getCookieTarget() / cookieRate;
+        do {
+            double currentRequiredTime = instance.getCookieTarget()
+                    / cookieRate;
             double timeCostOfNextFarm = instance.getFarmCost() / cookieRate;
-            double requiredTimeWithNextFarm = timeCostOfNextFarm + instance.getCookieTarget() / (cookieRate + instance.getFarmGain());
-            
-            if (requiredTimeWithNextFarm < currentRequiredTime)
-            {
+            double requiredTimeWithNextFarm = timeCostOfNextFarm
+                    + instance.getCookieTarget()
+                    / (cookieRate + instance.getFarmGain());
+
+            if (requiredTimeWithNextFarm < currentRequiredTime) {
                 cookieRate += instance.getFarmGain();
                 totalTime += timeCostOfNextFarm;
                 nextFarmRequired = true;
-            }
-            else 
-            {
+            } 
+            else {
                 totalTime += currentRequiredTime;
                 nextFarmRequired = false;
             }
-        }
+        } 
         while (nextFarmRequired);
-        
+
         return String.format("%.7f", totalTime);
     }
 }
