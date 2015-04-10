@@ -34,11 +34,19 @@ public abstract class TestCaseEnumerationBase<T extends TestCaseBase>
     }
 
     protected void initialize() {
-    	this.testCaseCount = this.readIntegerLine();
+    	this.setTestCaseCount(this.readIntegerLine());
     }
     
     protected abstract T readNextTestCase(int testCaseSeqNum);
 
+    protected final int getTestCaseCount() {
+    	return this.testCaseCount;
+    }
+    
+    protected final void setTestCaseCount(int testCaseCount) {
+    	this.testCaseCount = testCaseCount;
+    }
+    
     protected final String readLine() {
         try {
             return this.reader.readLine();
