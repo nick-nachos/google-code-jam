@@ -1,15 +1,15 @@
 package jam.google._blankProblem;
 
 import java.io.BufferedReader;
+import java.util.Enumeration;
 
 import jam.google.deployment.ProblemObjectFactory;
 import jam.google.deployment.ProblemSolver;
-import jam.google.deployment.TestCaseEnumerationBase;
 
 public class ObjectFactory implements ProblemObjectFactory<TestCase> {
 
     @Override
-    public TestCaseEnumerationBase<TestCase> getTestCaseEnumeration(BufferedReader in) {
+    public Enumeration<TestCase> getTestCaseEnumeration(BufferedReader in) {
         return new TestCaseEnumeration(in);
     }
 
