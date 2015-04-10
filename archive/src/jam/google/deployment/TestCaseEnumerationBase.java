@@ -14,7 +14,7 @@ public abstract class TestCaseEnumerationBase<T extends TestCaseBase>
 
     public TestCaseEnumerationBase(BufferedReader in) {
         this.reader = in;
-        this.testCaseCount = this.readIntegerLine();
+        this.initialize();
     }
 
     @Override
@@ -33,6 +33,10 @@ public abstract class TestCaseEnumerationBase<T extends TestCaseBase>
         return testCase;
     }
 
+    protected void initialize() {
+    	this.testCaseCount = this.readIntegerLine();
+    }
+    
     protected abstract T readNextTestCase(int testCaseSeqNum);
 
     protected final String readLine() {
